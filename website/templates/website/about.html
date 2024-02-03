@@ -1,0 +1,50 @@
+{% extends 'website/base.html' %}
+{% block title %}About{% endblock title %}
+{% load static %}
+{% block banner-context %}
+<div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'website/images/banner/b1.jpg'%}" class="d-block w-100" alt="banner image">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'website/images/banner/b2.jpg'%}" class="d-block w-100" alt="banner image">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'website/images/banner/b3.jpg'%}" class="d-block w-100" alt="banner image">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'website/images/banner/b4.jpg'%}" class="d-block w-100" alt="banner image">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+{% endblock banner-context %}
+
+{% block maincontext %}
+<br><br>
+    <h2 class="text-center">About us</h2>
+    <div class="container">
+        <p class="fs-4 text-center"> 
+            Welcome to [Your Company Name], where passion for food meets convenience. At [Your Company Name], we believe that great meals have the power to bring people together, and we're on a mission to make delicious and high-quality food accessible to everyone. Our team of culinary enthusiasts is dedicated to curating a diverse selection of delectable dishes, ranging from comfort classics to exotic flavors, all crafted with care and attention to detail.
+
+What sets us apart is our commitment to freshness and flavor. We source the finest ingredients from local producers and skilled chefs who share our dedication to culinary excellence. Whether you're a busy professional looking for a quick and tasty meal or a cooking enthusiast seeking premium ingredients, [Your Company Name] is your go-to destination.
+
+Beyond providing exceptional food, we value the connections we build with our customers. Your satisfaction is our top priority, and we strive to create a seamless and delightful shopping experience. Join us on a culinary journey, explore our enticing menu, and let [Your Company Name] be your trusted partner in creating memorable dining moments.
+
+Thank you for choosing [Your Company Name]. Bon appétit!
+
+
+        </p>
+    </div>
+    <br>
+    <br>
+{% endblock maincontext %}
+    

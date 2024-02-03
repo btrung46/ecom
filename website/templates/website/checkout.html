@@ -1,0 +1,66 @@
+{% extends 'website/base.html' %}
+{% block title %}check out{% endblock title %}
+{% load static %}
+
+{% block maincontext %}
+    <div class="container">
+        {% if messages %}
+                        
+            {% for msg in messages %}
+                <div class="alert alert-{{msg.tags}}" role="alert">
+                    {{msg}}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div class="row mt-5">
+            <div class="col-sm-6">
+                <h4>Order Summary</h4>
+                <hr>
+                
+                {% for item in cart_items %}
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <h5>product: {{item.product.title}}</h5>
+                            <p> Quantity: {{item.quantity}}</p>
+                            <p class="fw-bold">Price: {{item.product.discounted_price}} </p>
+                        </div>
+                    </div>
+                {% endfor %}
+                    <p class="fw-bold">Total Cost+Rs. 40 = {{ totalamount}}</p>
+                    <small>I just made a CRUD app with django. I have a problem: when I update a record, if I don't change j, it still shows as changed. How can I change it?</small>
+
+            </div>
+            <div class="col-sm-4 offset-sm-1">
+                <h4>select Shipping Address</h4>
+                <hr>
+                <form method="post" id="myform">
+                    {% csrf_token %}
+                    
+                    {% for ad in add %}
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>{{ad.name}}</h5>
+                            <p>Mobile: {{ad.mobile}}</p>
+                            <p> {{ad.address}} {{ad.city}} -  {{ad.zipcode}}</p>
+                        </div>
+                    </div>
+                    <div class="form-check mt-2 mb-5">
+                        <input class="form-check-input" type="radio" name="customerid" id="customeradd{{forloop.counter}}" value="{{ad.id}}">
+                        <label for="customeradd{{forloop.counter}}">
+                            Address: {{forloop.counter}}
+                        </label>
+                    </div>
+                    {% endfor %}
+                    <div class="form-check mb-3" >
+                        <label for="totalamount" class="form-label">Total Amount</label>
+                        <input type="number" class="form-control" name="totalamount" value="{{totalamount}}" readonly>
+                    </div>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Continue</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock maincontext %}
+    
