@@ -17,7 +17,10 @@ urlpatterns = [
     path('add-to-cart/',views.add_to_cart, name='add_to_cart'),
     path('cart/',views.show_cart,name='showcart' ),
     path('checkout/', views.checkout.as_view(),name='checkout'),
-
+    # path('payment/', views.payment.as_view(),name='payment'),
+    path('order/',views.OrderView,name='order' ),
+    
+    
     path("pluscart/",views.plus_cart),
     path("minuscart/",views.minus_cart),
     path('removecart/',views.remove_cart),

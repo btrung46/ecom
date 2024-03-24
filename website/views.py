@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from .models import Product,Customer,Cart
+from .models import Product,Customer,Cart,Order
 from .forms import CustomerRegisterForm,CustomerProfileForm
 from django.contrib import messages
 from django.http import JsonResponse
@@ -174,4 +174,23 @@ class checkout(View):
             amount += value
         totalamount = amount + 40
         return render(request,'website/checkout.html',locals())
-        
+    def post(self,request):
+        user = request.user
+        ad_id = request.POST.get('customerid')
+        add = Customer.objects.get(id=ad_id)
+        cart_items = Cart.objects.filter(user=user)
+        for cart in cart_items:
+            order = Order(user = user, customer=add ,product = cart.product, quantity = cart.quantity)
+            order.save()
+        cart_items.delete()
+        return redirect('order')
+    
+def OrderView(request):
+    user = request.user
+    order = Order.objects.filter(user = user)
+    amount = 0
+    for item in order:
+        value = item.quantity*item.product.discounted_price
+        amount += value
+    totalamount = amount + 40
+    return render(request,'website/order.html',locals())

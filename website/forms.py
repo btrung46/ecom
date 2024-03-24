@@ -38,3 +38,7 @@ class CustomerProfileForm(forms.ModelForm):
             'address':forms.TextInput(attrs={'class':'form-control'}),
             'zipcode':forms.NumberInput(attrs={'class':'form-control'}),
         }
+        
+        
+class PaymentForm(forms.ModelForm):
+    pass

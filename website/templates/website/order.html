@@ -1,0 +1,52 @@
+{% extends 'website/base.html' %}
+{% block title %}Customer Registration{% endblock title %}
+{% load static %}
+
+{% block maincontext %}
+<div class="container my-5">
+    <h3 class="text-center">YOUR ORDER</h3> <br>
+    <div class="row">
+        <div class="col-sm-7 offset-sm-1">
+            <div class="card">
+                <div class="card-body">
+                    {% for  item in order  %}
+                        <div class="row">
+                            <div class="col-sm-3 text-center align-self-center"> <img src="{{item.product.product_image.url}}" alt="" class="img-fluid img-thumbnail shadow-sm" height="150" width="150"></div>
+                            <div class="col-sm-9">
+                                <div>
+                                    <h5>{{item.product.title}}</h5>
+                                    <p class="mb-2 text-muted small">{{item.product.description}}</p>
+                                    <div class="my-3">
+                                        <label for="quantity">Quantity:</label>
+                                        <span id="quantity">{{item.quantity}}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mb-0"><span><strong>Rs. {{item.product.discounted_price}}</strong></span></p>
+                                    </div>
+                                </div>
+                                <p class="mb-0"><span><strong>Status: {{item.status}}</strong></span></p>
+                            </div>
+                            <!-- <div class="col-sm-1">
+                                <p class="mb-0"><span><strong>Rs. {{item.status}}</strong></span></p>
+                            </div> -->
+                        </div>
+                        <hr class="text-muted">
+                    {% endfor %} 
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 offset-sm-1">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-check mb-3">
+                        <label class="form-label">Total Amount:</label>
+                        <p class="mb-0"><span><strong>Rs.{{totalamount}}</strong></span></p>
+                    </div>
+                </div>
+            </div>                    
+        </div>
+    </div>
+</div>
+    
+{% endblock maincontext %}
+    

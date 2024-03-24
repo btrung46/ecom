@@ -57,7 +57,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
-                  <li><a class="dropdown-item" href="#">Order</a></li>
+                  <li><a class="dropdown-item" href="{% url 'order' %}">Order</a></li>
                   <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Change password</a></li>
                   <form action="{% url 'logout' %}">
                     {% csrf_token %}
@@ -94,6 +94,11 @@
       {% block maincontext %}
         
       {% endblock maincontext %}
+      
+      {% block payment-gateway %}
+        
+      {% endblock payment-gateway %}
+        
       <br>
       <br>
       <br>
